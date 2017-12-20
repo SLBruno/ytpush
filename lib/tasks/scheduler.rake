@@ -4,6 +4,7 @@ desc "puxar os novos videos 2x ao dia"
     Yt.configuration.log_level = :debug
     Yt.configuration.client_id = ENV["YOUTUBE_CLIENT_ID"]
     Yt.configuration.client_secret = ENV["YOUTUBE_CLIENT_SECRET"]
+    
   Video.YTCHID.each do |channelid|
     channel = Yt::Channel.new id:channelid
     videosid = channel.videos.take(4).map(&:id)

@@ -37,7 +37,7 @@
 </table>
 
 <br>
-
+<!--
 <%= link_to 'New Video', new_video_path %>
 
 <div id="main-content">
@@ -62,11 +62,11 @@
                     <%= image_tag(video.thumbnail_url, class:"responsive-img") %>
                     <h3><%= link_to video.title, video.url %></h3>
                     <h5><%= video.channel_title %> | <%= time_ago_in_words(video.published_at) %></h5>
-                    <!-- <p><%= video.description %></p> -->
+                     <p><%= video.description %></p> 
                   </div>
                 </div>
                 <% end %>
               <% end %>
           </div>
             <% end %>
-
+-->
