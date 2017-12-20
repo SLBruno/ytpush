@@ -36,6 +36,7 @@ gem 'figaro'
 gem 'whenever'
 gem 'pg', group: :production # Added postgres and made it production only.
 gem 'rails_12factor'
+gem 'yt-support', '~> 0.1.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
