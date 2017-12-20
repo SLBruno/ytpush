@@ -1,0 +1,57 @@
+<%= form_with(model: video, local: true) do |form| %>
+  <% if video.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(video.errors.count, "error") %> prohibited this video from being saved:</h2>
+
+      <ul>
+      <% video.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :video_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url, id: :video_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :video_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :published_at %>
+    <%= form.text_field :published_at, id: :video_published_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :thumbnail_url %>
+    <%= form.text_field :thumbnail_url, id: :video_thumbnail_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :channel_title %>
+    <%= form.text_field :channel_title, id: :video_channel_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :channel_id %>
+    <%= form.text_field :channel_id, id: :video_channel_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :duration %>
+    <%= form.text_field :duration, id: :video_duration %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

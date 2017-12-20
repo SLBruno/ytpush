@@ -1,0 +1,72 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Videos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Url</th>
+      <th>Description</th>
+      <th>Published at</th>
+      <th>Thumbnail url</th>
+      <th>Channel title</th>
+      <th>Channel</th>
+      <th>Duration</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @videos.each do |video| %>
+      <tr>
+        <td><%= video.title %></td>
+        <td><%= video.url %></td>
+        <td><%= video.description %></td>
+        <td><%= video.published_at %></td>
+        <td><%= video.thumbnail_url %></td>
+        <td><%= video.channel_title %></td>
+        <td><%= video.channel_id %></td>
+        <td><%= video.duration %></td>
+        <td><%= link_to 'Show', video %></td>
+        <td><%= link_to 'Edit', edit_video_path(video) %></td>
+        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Video', new_video_path %>
+
+<div id="main-content">
+  <div class="container">
+    <h1>Vídeos Tech</h1>
+    <h4> Fique por dentro do melhor conteúdo de tecnologia no Youtube, todo dia!</h4>
+
+    <% @videos2day = @videos.where(published_at: 2.days.ago..Time.now) %>
+    <% @videos5day = @videos.all %>
+
+      <h2>Hoje</h2>
+
+      <h2> Ontem </h2>
+
+      <h2>Dessa Semana</h2>
+        <% @videos5day.in_groups_of(4) do |group| %>
+          <div class="row">
+            <% group.each do |video| %>
+              <% if video %>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="panel-default">
+                    <%= image_tag(video.thumbnail_url, class:"responsive-img") %>
+                    <h3><%= link_to video.title, video.url %></h3>
+                    <h5><%= video.channel_title %> | <%= time_ago_in_words(video.published_at) %></h5>
+                    <!-- <p><%= video.description %></p> -->
+                  </div>
+                </div>
+                <% end %>
+              <% end %>
+          </div>
+            <% end %>
+
