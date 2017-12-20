@@ -1,5 +1,9 @@
 desc "puxar os novos videos 2x ao dia"
   task update_videos: :environment do
+    Yt.configuration.api_key = ENV["YOUTUBE_API_KEY"]
+    Yt.configuration.log_level = :debug
+    Yt.configuration.client_id = ENV["YOUTUBE_CLIENT_ID"]
+    Yt.configuration.client_secret = ENV["YOUTUBE_CLIENT_SECRET"]
   Video.YTCHID.each do |channelid|
     channel = Yt::Channel.new id:channelid
     videosid = channel.videos.take(4).map(&:id)
