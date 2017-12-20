@@ -1,5 +1,4 @@
-namespace :my_tasks do
-  desc "puxar os novos videos 2x ao dia"
+desc "puxar os novos videos 2x ao dia"
   task update_videos: :environment do
   Video.YTCHID.each do |channelid|
     channel = Yt::Channel.new id:channelid
@@ -19,4 +18,3 @@ namespace :my_tasks do
       end
     end
   end
-end
