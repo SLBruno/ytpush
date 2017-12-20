@@ -9,9 +9,16 @@ Bundler.require(*Rails.groups)
 module Ytpush
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    Yt.configure do |config|
+  config.client_id = '1234567890.apps.googleusercontent.com'
+  config.client_secret = '1234567890'
+end
+
     config.load_defaults 5.1
     Yt.configuration.api_key = ENV["YOUTUBE_API_KEY"]
     Yt.configuration.log_level = :debug
+    Yt.configuration.client_id = ENV["YOUTUBE_CLIENT_ID"]
+    Yt.configuration.client_secret = ENV["YOUTUBE_CLIENT_SECRET"]
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
